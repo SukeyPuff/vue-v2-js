@@ -1,11 +1,32 @@
 <template>
-  <li>{{ todo.text }}</li>
+  <label>
+    {{ label }}
+    <input
+      v-bind="$attrs"
+      :value="value"
+      v-on="inputListeners"
+    >
+  </label>
 </template>
 
 <script>
 export default {
-  props: {
-    todo: String
+  anme: 'TodoItem',
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  computed: {
+    inputListeners() {
+      var vm = this
+
+      return Object.assign({},
+        this.$listeners,
+        {
+          input(event) {
+            vm.$emit('input', event.target.value)
+          }
+        }
+      )
+    }
   }
 }
 </script>

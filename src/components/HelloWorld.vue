@@ -1,27 +1,24 @@
 <template>
   <div>
-    <p>{{message}}</p>
-    <p>{{reverseMessage}}</p>
+      <todo-item v-model="lovingVue"></todo-item>
   </div>
 </template>
 
 <script>
+import TodoItem from './TodoItem.vue'
 
 export default {
   name: 'HelloWorld',
+  components: {
+    TodoItem
+  },
   data() {
     return {
-      message: 'Hello'
+      lovingVue: true
     }
-  },
-  computed: {
-    reverseMessage: function() {
-      return this.message.split('').reverse().join('')
-    }
-  } 
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
