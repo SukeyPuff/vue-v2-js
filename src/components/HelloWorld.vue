@@ -1,6 +1,7 @@
 <template>
   <div>
-      <todo-item v-model="lovingVue"></todo-item>
+      {{ username }}
+      <todo-item label="Username" v-bind:title.sync="username"></todo-item>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ export default {
   },
   data() {
     return {
-      lovingVue: true
+      username: 'Tom'
     }
   }
 }

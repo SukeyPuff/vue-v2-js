@@ -1,32 +1,19 @@
 <template>
-  <label>
-    {{ label }}
+  <div>
+    <label>{{ label }}: </label>
     <input
-      v-bind="$attrs"
-      :value="value"
-      v-on="inputListeners"
+      :value="title"
+      @input="$emit('update:title', $event.target.value)"
     >
-  </label>
+  </div>
 </template>
 
 <script>
 export default {
-  anme: 'TodoItem',
-  inheritAttrs: false,
-  props: ['label', 'value'],
-  computed: {
-    inputListeners() {
-      var vm = this
-
-      return Object.assign({},
-        this.$listeners,
-        {
-          input(event) {
-            vm.$emit('input', event.target.value)
-          }
-        }
-      )
-    }
+  name: 'TodoItem',
+  props: {
+    label: String,
+    title: String
   }
 }
 </script>
